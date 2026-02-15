@@ -138,11 +138,15 @@ col1, col2 = st.columns([2, 1])
 traj_slot = col1.empty()
 loss_slot = col2.empty()
 
+# static 3D trajectory visualization (matplotlib)
+fig_static = plot_3d_trajectory(full_truth)
+traj_slot.pyplot(fig_static, use_container_width=False)
+plt.close(fig_static)
+
 loss_slot.plotly_chart(go.Figure(), width='stretch')
 
 # animation
-if st.button("Start Animation"):
-
+if st.button("Start"):
     for frame in range(total_frames):
 
         # trajectory

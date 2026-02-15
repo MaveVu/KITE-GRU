@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os
@@ -118,3 +119,16 @@ class GRUModel(nn.Module):
         out_vel = self.fc_vel(out)
         return torch.cat([out_pos, out_vel], dim=2)
     
+
+def plot_3d_trajectory(truth):
+    fig = plt.figure(figsize=(3, 3))
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.plot(truth[:, 0], truth[:, 1], truth[:, 2], 'b-', linewidth=2, label='Ground Truth')
+
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.legend()
+    plt.tight_layout()
+    return fig
