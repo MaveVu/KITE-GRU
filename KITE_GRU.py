@@ -236,7 +236,7 @@ if start_button:
             height=300,
             margin=dict(l=0, r=0, t=20, b=0),
             showlegend=True,
-            legend=dict(x=0.7, y=1)
+            legend=dict(x=0.7, y=1.08, yanchor="bottom")
         )
         error_slot.plotly_chart(fig_error, width='stretch', key=f"error-{frame}")
 
