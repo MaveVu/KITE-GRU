@@ -161,14 +161,14 @@ fig_static_3d.update_layout(
 )
 
 # Initialize plots
-traj_3d_slot.plotly_chart(fig_static_3d, use_container_width=True, key="3d-traj-init")
-error_slot.plotly_chart(go.Figure().update_layout(height=300, margin=dict(l=0, r=0, t=0, b=0)), use_container_width=True, key="error-init")
-per_axis_slot.plotly_chart(go.Figure().update_layout(height=300, margin=dict(l=0, r=0, t=0, b=0)), use_container_width=True, key="per-axis-init")
+traj_3d_slot.plotly_chart(fig_static_3d, width='stretch', key="3d-traj-init")
+error_slot.plotly_chart(go.Figure().update_layout(height=300, margin=dict(l=0, r=0, t=0, b=0)), width='stretch', key="error-init")
+per_axis_slot.plotly_chart(go.Figure().update_layout(height=300, margin=dict(l=0, r=0, t=0, b=0)), width='stretch', key="per-axis-init")
 
 # Start button
 start_col1, start_col2, start_col3 = st.columns([1, 1, 1])
 with start_col2:
-    start_button = st.button("Start", use_container_width=True)
+    start_button = st.button("Start", width='stretch')
 
 # Animation
 if start_button:
@@ -215,7 +215,7 @@ if start_button:
             showlegend=True,
             legend=dict(x=0, y=1, font=dict(size=10))
         )
-        traj_3d_slot.plotly_chart(fig_traj, use_container_width=True, key=f"3d-traj-{frame}")
+        traj_3d_slot.plotly_chart(fig_traj, width='stretch', key=f"3d-traj-{frame}")
 
         # Error animation
         fig_error = go.Figure()
@@ -238,7 +238,7 @@ if start_button:
             showlegend=True,
             legend=dict(x=0.7, y=1)
         )
-        error_slot.plotly_chart(fig_error, use_container_width=True, key=f"error-{frame}")
+        error_slot.plotly_chart(fig_error, width='stretch', key=f"error-{frame}")
 
         # Per-axis: ground truth static, prediction animated
         fig_per_axis = go.Figure()
@@ -305,7 +305,7 @@ if start_button:
             showlegend=True,
             legend=dict(x=1.02, y=0.5, xanchor="left", yanchor="middle", font=dict(size=10))
         )
-        per_axis_slot.plotly_chart(fig_per_axis, use_container_width=True, key=f"per-axis-{frame}")
+        per_axis_slot.plotly_chart(fig_per_axis, width='stretch', key=f"per-axis-{frame}")
 
         time.sleep(1 / FPS)
     
